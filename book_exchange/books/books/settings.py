@@ -122,8 +122,12 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
 LOGIN_URL = 'login'
+# Folder where collectstatic will put all static files
+
+# (Optional) Additional places Django will look for static files
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
