@@ -22,7 +22,7 @@ Book Buddy is a Django-based web application designed for college students to ex
 ## Getting Started
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.8
 - Django 4.x
 - Git
 - Virtualenv (recommended)
@@ -30,14 +30,15 @@ Book Buddy is a Django-based web application designed for college students to ex
 ### Installation
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/book-buddy.git
-   cd book-buddy
+   git clone https://github.com/RohanKhodade/BookBuddy.git
+   cd book_exchange
+   cd books
    ```
 
 2. **Set Up a Virtual Environment**:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/Scripts/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. **Install Dependencies**:
@@ -86,4 +87,4 @@ Contributions are welcome! To contribute:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For questions or feedback, reach out via [your-email@example.com](mailto:your-email@example.com) or open an issue on GitHub.
+For questions or feedback, reach out via [your-email@example.com](mailto:rohankhodade883@gmail.com) or open an issue on GitHub.
