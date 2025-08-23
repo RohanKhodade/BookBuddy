@@ -132,15 +132,15 @@ PASSWORD_HASHERS = [
 ]
 
 # Twilio / Cohere / Pinecone keys
-RECOVRY_CODE = os.getenv('recovry_code', '')
-ADMIN_PASS = os.getenv('admin_pass', '')
-USERNAME = os.getenv('username', '')
-A = os.getenv('a', '')
-B = os.getenv('b', '')
-COHERE_KEY = os.getenv('cohere_key', '')
-PINECONE_KEY = os.getenv('pinecone_key', '')
-ENV = os.getenv('env', '')
-INDEX_NAME = os.getenv('index_name', '')
+RECOVRY_CODE = os.getenv('RECOVERY_CODE', '')
+ADMIN_PASS = os.getenv('ADMIN_PASS', '')
+USERNAME = os.getenv('USERNAME', '')
+A = os.getenv('A', '')
+B = os.getenv('B', '')
+COHERE_KEY = os.getenv('COHERE_KEY', '')
+PINECONE_KEY = os.getenv('PINECONE_KEY', '')
+ENV = os.getenv('ENV', '')
+INDEX_NAME = os.getenv('INDEX_NAME', '')
 
 # Security settings for production
 CSRF_TRUSTED_ORIGINS = [
