@@ -5,11 +5,11 @@ import os
 
 load_dotenv()
 
-index_name = os.getenv('index_name')
+index_name = os.getenv('INDEX_NAME')
 
-co = cohere.Client(os.getenv('cohere_key'))
+co = cohere.Client(os.getenv('COHERE_KEY'))
 
-pinecone_instance = Pinecone(api_key=os.getenv('pinecone_key'), environment=os.getenv('env'))
+pinecone_instance = Pinecone(api_key=os.getenv('PINECONE_KEY'), environment=os.getenv('ENV'))
 
 if index_name not in pinecone_instance.list_indexes().names():
     pinecone_instance.create_index(
@@ -18,7 +18,7 @@ if index_name not in pinecone_instance.list_indexes().names():
         metric="cosine",
         spec=ServerlessSpec(
             cloud="aws",
-            region=os.getenv('env')
+            region=os.getenv('ENV')
         )
     )
 index = pinecone_instance.Index(index_name)

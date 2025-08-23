@@ -131,7 +131,6 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
-# Twilio / Cohere / Pinecone keys
 RECOVRY_CODE = os.getenv('RECOVERY_CODE', '')
 ADMIN_PASS = os.getenv('ADMIN_PASS', '')
 USERNAME = os.getenv('USERNAME', '')
