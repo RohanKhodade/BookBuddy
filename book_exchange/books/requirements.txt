@@ -8,3 +8,4 @@ pillow
 gunicorn
 dj-database-url
 whitenoise
+psycopg2-binary   # only needed if you’ll use Postgres on Render
