@@ -11,39 +11,39 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
+import os.path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('secret_key', 'django-insecure-kq47#5-b7jwv#1ho%rwjk(98@=4%r08ldcd5po%99(6p1b9!&v')
+SECRET_KEY = 'django-insecure-kq47#5-b7jwv#1ho%rwjk(98@=4%r08ldcd5po%99(6p1b9!&v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('debug', 'False').lower() == 'true'
+DEBUG = True
 
-ALLOWED_HOSTS = os.getenv('allowed_hosts', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = ["*"]
+
 
 # Application definition
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',  # Added for WhiteNoise to handle static files
     'django.contrib.staticfiles',
     'Auth',
     'BookStore',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Moved up for better performance
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'books.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'template'],
+        'DIRS': ['template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,6 +75,7 @@ WSGI_APPLICATION = 'books.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -84,6 +85,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -101,52 +103,39 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_TZ = True
 
+import os
+
 # Managing Media
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
 LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Password hashers
+# settings.py
+
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
     'django.contrib.auth.hashers.Argon2PasswordHasher',
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
-
-RECOVRY_CODE = os.getenv('RECOVERY_CODE', '')
-ADMIN_PASS = os.getenv('ADMIN_PASS', '')
-USERNAME = os.getenv('USERNAME', '')
-A = os.getenv('A', '')
-B = os.getenv('B', '')
-COHERE_KEY = os.getenv('COHERE_KEY', '')
-PINECONE_KEY = os.getenv('PINECONE_KEY', '')
-ENV = os.getenv('ENV', '')
-INDEX_NAME = os.getenv('INDEX_NAME', '')
-
-# Security settings for production
-CSRF_TRUSTED_ORIGINS = [
-    'http://127.0.0.1:8000',
-    'http://localhost:8000',
-    'https://*.pythonanywhere.com',  # For PythonAnywhere deployment
-]
-SECURE_SSL_REDIRECT = False  # Set to True if using HTTPS in production
-SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
-CSRF_COOKIE_SECURE = False  # Set to True if using HTTPS
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
