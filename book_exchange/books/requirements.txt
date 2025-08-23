@@ -1,0 +1,10 @@
+cohere==5.17.0
+Django==5.1.6
+pinecone==7.3.0
+python-dotenv==1.1.1
+twilio==9.4.5
+python-decouple
+pillow
+gunicorn
+dj-database-url
+whitenoise
