@@ -163,7 +163,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security
 # -------------------------------------------------------------------
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret")   # use env var in production
-DEBUG = os.getenv("DEBUG", "0") == "1"              # default False on Render
+DEBUG = os.getenv("DEBUG", "0") == "0"              # default False on Render
 
 # Render gives you your hostname via env
 RENDER_HOST = os.getenv("RENDER_EXTERNAL_HOSTNAME", "")
@@ -197,7 +197,7 @@ INSTALLED_APPS = [
 # -------------------------------------------------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # <--- must be right after SecurityMiddleware
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
